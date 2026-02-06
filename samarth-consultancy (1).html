@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samarth Consultancy Services | IT Solutions & Data Engineering</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <title>Samarth Consultancy Services | Enterprise IT Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons.css">
     <style>
         :root {
-            --primary: #0A0E27;
-            --accent: #00F0FF;
-            --accent-dim: #0099CC;
-            --secondary: #FF006E;
-            --text: #E8E8E8;
-            --text-dim: #A0A0A0;
-            --bg: #030614;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --primary-blue: #0066CC;
+            --dark-blue: #003D82;
+            --light-blue: #E6F2FF;
+            --accent-purple: #6B2E9E;
+            --text-dark: #1A1A1A;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --gray-light: #F5F5F5;
+            --gray-medium: #E0E0E0;
+            --success-green: #00A65A;
         }
 
         * {
@@ -26,81 +27,155 @@
         }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
+        /* Top Bar */
+        .top-bar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            background: #1A1A1A !important;
+            color: #FFFFFF !important;
+            font-size: 0.85rem;
+            padding: 0.5rem 5%;
+            z-index: 9999 !important;
+            display: block !important;
         }
 
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 20% 50%, rgba(0, 240, 255, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(255, 0, 110, 0.1) 0%, transparent 50%);
-            animation: bgFloat 20s ease-in-out infinite;
+        .top-bar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        @keyframes bgFloat {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-5%, -5%) rotate(5deg); }
+        .top-bar-left {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .top-bar-left span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .top-bar-right {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .language-selector select {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .language-selector select option {
+            background: var(--text-dark);
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
         }
 
         /* Navigation */
         nav {
             position: fixed;
-            top: 0;
+            top: 40px;
             width: 100%;
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
-            background: rgba(3, 6, 20, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
         }
 
-        nav.scrolled {
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
             padding: 1rem 5%;
-            background: rgba(3, 6, 20, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            letter-spacing: 2px;
+        }
+
+        .logo-divider {
+            width: 2px;
+            height: 30px;
+            background: var(--gray-medium);
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .nav-links {
             display: flex;
             gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
-            color: var(--text);
+            color: var(--text-dark);
             text-decoration: none;
             font-weight: 500;
-            position: relative;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
+            position: relative;
         }
 
         .nav-links a::after {
@@ -110,83 +185,156 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
+            background: var(--primary-blue);
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--primary-blue);
         }
 
         .nav-links a:hover::after {
             width: 100%;
         }
 
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 250px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            padding: 0.5rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            margin-top: 1rem;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.8rem 1.5rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-menu a::after {
+            display: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--light-blue);
+            border-left-color: var(--primary-blue);
+            padding-left: 2rem;
+        }
+
+        .nav-cta {
+            background: var(--primary-blue);
+            color: var(--white) !important;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        .nav-cta:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+
         /* Hero Section */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 5%;
+            margin-top: 120px;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            padding: 6rem 5%;
             position: relative;
             overflow: hidden;
         }
 
-        .hero-content {
-            max-width: 1200px;
-            text-align: center;
-            animation: fadeInUp 1s ease-out;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.05);stop-opacity:1" /><stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" /></linearGradient></defs><circle cx="800" cy="200" r="400" fill="url(%23grad)"/><circle cx="600" cy="600" r="300" fill="url(%23grad)"/></svg>') no-repeat center;
+            background-size: cover;
+            opacity: 0.3;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
-            margin-bottom: 1rem;
             line-height: 1.2;
-            animation: fadeInUp 1s ease-out 0.2s backwards;
+            margin-bottom: 1.5rem;
         }
 
-        .hero .subtitle {
-            font-family: 'Instrument Serif', serif;
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-            color: var(--text-dim);
+        .hero-content .highlight {
+            color: #FFD700;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
             margin-bottom: 1rem;
-            font-style: italic;
-            animation: fadeInUp 1s ease-out 0.4s backwards;
+            opacity: 0.9;
         }
 
-        .hero .company-info {
-            font-size: 1rem;
-            color: var(--accent);
-            margin-bottom: 2.5rem;
-            animation: fadeInUp 1s ease-out 0.6s backwards;
+        .company-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
         }
 
-        .cta-buttons {
+        .hero-buttons {
             display: flex;
-            gap: 1.5rem;
-            justify-content: center;
+            gap: 1rem;
             flex-wrap: wrap;
-            animation: fadeInUp 1s ease-out 0.8s backwards;
         }
 
         .btn {
-            padding: 1rem 2.5rem;
+            padding: 1rem 2rem;
             border: none;
-            border-radius: 50px;
-            font-family: 'Space Grotesk', sans-serif;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -196,125 +344,147 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--accent), var(--accent-dim));
-            color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
+            background: var(--white);
+            color: var(--primary-blue);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.5);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
         }
 
         .btn-secondary {
             background: transparent;
-            color: var(--text);
-            border: 2px solid var(--accent);
+            color: var(--white);
+            border: 2px solid var(--white);
         }
 
         .btn-secondary:hover {
-            background: var(--accent);
-            color: var(--primary);
-            transform: translateY(-3px);
+            background: var(--white);
+            color: var(--primary-blue);
         }
 
-        /* Floating particles */
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            background: var(--accent);
-            border-radius: 50%;
-            opacity: 0.1;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        .particle:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            left: 10%;
-            top: 20%;
-            animation-delay: 0s;
-        }
-
-        .particle:nth-child(2) {
-            width: 60px;
-            height: 60px;
-            right: 15%;
-            top: 40%;
-            animation-delay: 3s;
-        }
-
-        .particle:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            left: 70%;
-            bottom: 30%;
-            animation-delay: 6s;
-            background: var(--secondary);
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-30px) rotate(180deg);
-            }
-        }
-
-        /* Section Styling */
-        section {
-            padding: 6rem 5%;
+        .hero-image {
             position: relative;
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-title p {
-            color: var(--text-dim);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Services Grid */
-        .services-grid {
+        .hero-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--gray-light);
+            padding: 2rem 5%;
+            text-align: center;
+        }
+
+        .trust-container {
             max-width: 1400px;
             margin: 0 auto;
         }
 
+        .trust-title {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .trust-logos {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .trust-badge {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 5%;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-subtitle {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
         .service-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
+            background: var(--white);
+            border: 2px solid var(--gray-medium);
+            border-radius: 8px;
             padding: 2.5rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            cursor: pointer;
         }
 
         .service-card::before {
@@ -322,200 +492,305 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(255, 0, 110, 0.1));
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            width: 4px;
+            height: 0;
+            background: var(--primary-blue);
+            transition: height 0.3s ease;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 60px rgba(0, 240, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-blue);
         }
 
         .service-card:hover::before {
-            opacity: 1;
+            height: 100%;
+        }
+
+        .service-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--light-blue);
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            opacity: 0.5;
         }
 
         .service-icon {
-            font-size: 3rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
-            display: inline-block;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .service-card:hover .service-icon {
-            animation: rotate 0.6s ease;
-        }
-
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
         }
 
         .service-card h3 {
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--text);
-            position: relative;
-            z-index: 1;
+            color: var(--text-dark);
         }
 
         .service-card p {
-            color: var(--text-dim);
+            color: var(--text-light);
             margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
+            line-height: 1.8;
         }
 
-        .tech-tags {
+        .tech-stack {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            position: relative;
-            z-index: 1;
         }
 
         .tech-tag {
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid rgba(0, 240, 255, 0.3);
+            background: var(--light-blue);
+            color: var(--primary-blue);
             padding: 0.4rem 1rem;
             border-radius: 20px;
             font-size: 0.85rem;
-            color: var(--accent);
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
         .service-card:hover .tech-tag {
-            background: rgba(0, 240, 255, 0.2);
-            border-color: var(--accent);
+            background: var(--primary-blue);
+            color: var(--white);
         }
 
         /* Technologies Section */
-        .tech-showcase {
+        .technologies {
+            padding: 6rem 5%;
+            background: var(--gray-light);
+        }
+
+        .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .tech-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
             text-align: center;
-            padding: 2rem;
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
             transition: all 0.3s ease;
-            cursor: pointer;
+            border: 2px solid transparent;
         }
 
         .tech-item:hover {
-            transform: scale(1.05);
-            border-color: var(--accent);
-            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        .tech-item img {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 1rem;
+        .tech-logo {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 1rem;
             filter: grayscale(100%);
             transition: filter 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .tech-item:hover img {
+        .tech-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .tech-item:hover .tech-logo {
             filter: grayscale(0%);
         }
 
-        .tech-item h4 {
-            font-size: 1rem;
-            color: var(--text);
+        .tech-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--text-dark);
         }
 
-        /* Stats Section */
-        .stats {
+        /* Industries Section */
+        .industries {
+            padding: 6rem 5%;
+            background: var(--white);
+        }
+
+        .industries-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 4rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
 
-        .stat-item {
+        .industry-card {
+            background: var(--white);
+            border: 2px solid var(--gray-medium);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
             text-align: center;
         }
 
-        .stat-number {
-            font-size: 4rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
+        .industry-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: var(--light-blue);
         }
 
-        .stat-label {
-            color: var(--text-dim);
-            font-size: 1.1rem;
+        .industry-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .industry-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .industry-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            padding: 6rem 5%;
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover .feature-icon {
+            background: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .feature-item h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item p {
+            color: var(--text-light);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
+            padding: 5rem 5%;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
 
         /* Contact Section */
+        .contact {
+            padding: 6rem 5%;
+            background: var(--gray-light);
+        }
+
         .contact-container {
             max-width: 800px;
             margin: 0 auto;
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
+            background: var(--white);
             padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-group {
             margin-bottom: 1.5rem;
         }
 
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--text);
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--text-dark);
         }
 
         .form-group input,
+        .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            color: var(--text);
-            font-family: 'Space Grotesk', sans-serif;
+            padding: 0.9rem;
+            border: 2px solid var(--gray-medium);
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
             font-size: 1rem;
             transition: all 0.3s ease;
         }
 
         .form-group input:focus,
+        .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
         }
 
         .form-group textarea {
@@ -523,328 +798,795 @@
             resize: vertical;
         }
 
-        /* Footer */
-        footer {
-            background: var(--primary);
-            padding: 3rem 5%;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        .btn-submit {
+            width: 100%;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 1.2rem;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .footer-content {
-            max-width: 1200px;
+        .btn-submit:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 3rem 5% 1rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
-        .footer-links a {
-            color: var(--text-dim);
+        .footer-section h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
             transition: color 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: var(--accent);
+        .footer-section a:hover {
+            color: var(--white);
+            padding-left: 5px;
         }
 
-        .copyright {
-            color: var(--text-dim);
-            font-size: 0.9rem;
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Scroll Animation */
-        .fade-in {
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Animations */
+        .fade-up {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease;
+            transition: all 0.6s ease;
         }
 
-        .fade-in.visible {
+        .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
+            .hero {
+                margin-top: 80px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
             .nav-links {
                 display: none;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            .top-bar-left span:last-child {
+                display: none;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
             }
 
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
+            .form-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* Custom Cursor */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--accent);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.1s ease;
-            opacity: 0;
-        }
-
-        .cursor-follower {
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: all 0.3s ease;
-            opacity: 0;
-        }
-
-        @media (pointer: fine) {
-            .cursor,
-            .cursor-follower {
+        /* Loading Animation */
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
                 opacity: 1;
+                transform: translateX(0);
             }
+        }
+
+        .animate-slide {
+            animation: slideInFromLeft 0.8s ease-out;
         }
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
-    <!-- Background Animation -->
-    <div class="bg-animation"></div>
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <span>📧 info@samarthcs.com</span>
+                <span>📞 +91 1234567890</span>
+            </div>
+            <div class="top-bar-right">
+                <div class="language-selector">
+                    <select id="languageSelect">
+                        <option value="en">🌐 English</option>
+                        <option value="hi">हिंदी</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+                <div class="social-links">
+                    <a href="#" title="LinkedIn">in</a>
+                    <a href="#" title="Twitter">𝕏</a>
+                    <a href="#" title="Facebook">f</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Navigation -->
-    <nav id="navbar">
-        <div class="logo">SCS</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#technologies">Technologies</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+    <nav>
+        <div class="nav-container">
+            <a href="#home" style="text-decoration: none;">
+                <div class="logo-container">
+                    <div class="logo">SCS</div>
+                    <div class="logo-divider"></div>
+                    <div class="logo-subtitle">Samarth Group</div>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" data-i18n="home">Home</a></li>
+                <li class="dropdown">
+                    <a href="#services" data-i18n="ourServices">Our Services ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="#services" data-i18n="appWebDev">App & Web Development</a>
+                        <a href="#services" data-i18n="dataEng">Data Engineering</a>
+                        <a href="#services" data-i18n="businessIntel">Business Intelligence</a>
+                        <a href="#services" data-i18n="dataScience">Data Science & AI/ML</a>
+                        <a href="#services" data-i18n="digitalMarketing">Digital Marketing</a>
+                        <a href="#services" data-i18n="integration">Integration & APIs</a>
+                    </div>
+                </li>
+                <li><a href="#technologies" data-i18n="technologies">Technologies</a></li>
+                <li><a href="#industries" data-i18n="industries">Industries</a></li>
+                <li class="dropdown">
+                    <a href="#resources" data-i18n="resources">Resources ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="#blog">Blog</a>
+                        <a href="#case-studies">Case Studies</a>
+                        <a href="#whitepapers">Whitepapers</a>
+                        <a href="#webinars">Webinars</a>
+                    </div>
+                </li>
+                <li><a href="#why-choose" data-i18n="whyUs">Why Us</a></li>
+                <li><a href="#careers" data-i18n="careers">Careers</a></li>
+                <li><a href="#contact" class="nav-cta" data-i18n="contactUs">Contact Us</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-        <div class="hero-content">
-            <h1>Transforming Data Into <br>Strategic Advantage</h1>
-            <p class="subtitle">Where Innovation Meets Excellence</p>
-            <p class="company-info">A subsidiary of Samarth Group</p>
-            <div class="cta-buttons">
-                <a href="#services" class="btn btn-primary">Explore Services</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        <div class="hero-container">
+            <div class="hero-content animate-slide">
+                <h1 data-i18n="heroTitle">Empowering Businesses with <span class="highlight">Intelligent Solutions</span></h1>
+                <div class="company-tag" data-i18n="heroSubtitle">A Subsidiary of Samarth Group</div>
+                <p data-i18n="heroDescription">Leading IT consultancy delivering cutting-edge technology solutions in Application Development, Data Engineering, Business Intelligence, AI/ML, and Digital Marketing.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary" data-i18n="exploreServices">Explore Our Services</a>
+                    <a href="#contact" class="btn btn-secondary" data-i18n="scheduleConsultation">Schedule Consultation</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-stats">
+                    <div class="stat-box fade-up">
+                        <div class="stat-number" data-i18n="stat1">150+</div>
+                        <div class="stat-label" data-i18n="projectsDelivered">Projects Delivered</div>
+                    </div>
+                    <div class="stat-box fade-up">
+                        <div class="stat-number" data-i18n="stat2">98%</div>
+                        <div class="stat-label" data-i18n="clientSatisfaction">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-box fade-up">
+                        <div class="stat-number" data-i18n="stat3">50+</div>
+                        <div class="stat-label" data-i18n="enterpriseClients">Enterprise Clients</div>
+                    </div>
+                    <div class="stat-box fade-up">
+                        <div class="stat-number" data-i18n="stat4">24/7</div>
+                        <div class="stat-label" data-i18n="supportAvailable">Support Available</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services">
-        <div class="section-title fade-in">
-            <h2>Our Core Services</h2>
-            <p>Comprehensive IT solutions tailored to your business needs</p>
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-container">
+            <div class="trust-title">Trusted by Leading Organizations</div>
+            <div class="trust-logos">
+                <div class="trust-badge">Fortune 500</div>
+                <div class="trust-badge">ISO Certified</div>
+                <div class="trust-badge">Global Delivery</div>
+                <div class="trust-badge">24/7 Support</div>
+            </div>
         </div>
-        <div class="services-grid">
-            <div class="service-card fade-in">
-                <div class="service-icon">📱</div>
-                <h3>App & Web Development</h3>
-                <p>Building scalable, responsive applications that drive user engagement and business growth.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">Node.js</span>
-                    <span class="tech-tag">Flutter</span>
-                    <span class="tech-tag">Next.js</span>
-                </div>
-            </div>
+    </div>
 
-            <div class="service-card fade-in">
-                <div class="service-icon">🔧</div>
-                <h3>Data Engineering</h3>
-                <p>Enterprise-grade data pipelines and infrastructure for seamless data operations.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">Snowflake</span>
-                    <span class="tech-tag">Databricks</span>
-                    <span class="tech-tag">Apache Spark</span>
-                    <span class="tech-tag">ETL/ELT</span>
-                </div>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header fade-up">
+                <div class="section-subtitle" data-i18n="whatWeOffer">What We Offer</div>
+                <h2 class="section-title" data-i18n="comprehensiveIT">Comprehensive IT Solutions</h2>
+                <p class="section-description" data-i18n="servicesDesc">Transform your business with our end-to-end technology services designed for the digital age</p>
             </div>
-
-            <div class="service-card fade-in">
-                <div class="service-icon">📊</div>
-                <h3>BI Dashboarding</h3>
-                <p>Transform raw data into actionable insights with stunning, interactive visualizations.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">Power BI</span>
-                    <span class="tech-tag">Tableau</span>
-                    <span class="tech-tag">Sigma</span>
-                    <span class="tech-tag">Analytics</span>
+            <div class="services-grid">
+                <div class="service-card fade-up">
+                    <div class="service-number">01</div>
+                    <div class="service-icon">💻</div>
+                    <h3>Application & Web Development</h3>
+                    <p>Build scalable, high-performance applications with modern frameworks and cutting-edge technologies that drive business growth.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">.NET</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="service-card fade-in">
-                <div class="service-icon">🤖</div>
-                <h3>Data Science & AI/ML</h3>
-                <p>Leverage artificial intelligence and machine learning to unlock predictive insights.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">TensorFlow</span>
-                    <span class="tech-tag">PyTorch</span>
-                    <span class="tech-tag">MLOps</span>
+                <div class="service-card fade-up">
+                    <div class="service-number">02</div>
+                    <div class="service-icon">⚙️</div>
+                    <h3>Data Engineering</h3>
+                    <p>Design and implement robust data pipelines and infrastructure for seamless data operations at enterprise scale.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Snowflake</span>
+                        <span class="tech-tag">Databricks</span>
+                        <span class="tech-tag">dbt</span>
+                        <span class="tech-tag">Apache Spark</span>
+                        <span class="tech-tag">Airflow</span>
+                        <span class="tech-tag">Kafka</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="service-card fade-in">
-                <div class="service-icon">📢</div>
-                <h3>Digital Marketing</h3>
-                <p>Drive growth with data-driven marketing strategies and comprehensive digital solutions.</p>
-                <div class="tech-tags">
-                    <span class="tech-tag">SEO/SEM</span>
-                    <span class="tech-tag">Social Media</span>
-                    <span class="tech-tag">Content Marketing</span>
-                    <span class="tech-tag">Analytics</span>
+                <div class="service-card fade-up">
+                    <div class="service-number">03</div>
+                    <div class="service-icon">📊</div>
+                    <h3>Business Intelligence</h3>
+                    <p>Transform raw data into actionable insights with powerful analytics and interactive dashboards.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Power BI</span>
+                        <span class="tech-tag">Tableau</span>
+                        <span class="tech-tag">Sigma</span>
+                        <span class="tech-tag">Looker</span>
+                        <span class="tech-tag">Qlik</span>
+                    </div>
+                </div>
+
+                <div class="service-card fade-up">
+                    <div class="service-number">04</div>
+                    <div class="service-icon">🧠</div>
+                    <h3>Data Science & AI/ML</h3>
+                    <p>Harness the power of artificial intelligence and machine learning to unlock predictive insights and automation.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">MLOps</span>
+                    </div>
+                </div>
+
+                <div class="service-card fade-up">
+                    <div class="service-number">05</div>
+                    <div class="service-icon">📱</div>
+                    <h3>Digital Marketing</h3>
+                    <p>Drive growth with data-driven marketing strategies, SEO optimization, and comprehensive digital campaigns.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Google Analytics</span>
+                        <span class="tech-tag">Salesforce</span>
+                        <span class="tech-tag">Mailchimp</span>
+                        <span class="tech-tag">SEO/SEM</span>
+                        <span class="tech-tag">Social Media</span>
+                    </div>
+                </div>
+
+                <div class="service-card fade-up">
+                    <div class="service-number">06</div>
+                    <div class="service-icon">🔗</div>
+                    <h3>Integration & APIs</h3>
+                    <p>Seamlessly connect your systems and applications with robust integration solutions and API management.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">MuleSoft</span>
+                        <span class="tech-tag">REST APIs</span>
+                        <span class="tech-tag">GraphQL</span>
+                        <span class="tech-tag">Informatica</span>
+                        <span class="tech-tag">Microservices</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Technologies Section -->
-    <section id="technologies">
-        <div class="section-title fade-in">
-            <h2>Technology Stack</h2>
-            <p>Powered by industry-leading platforms and frameworks</p>
-        </div>
-        <div class="tech-showcase">
-            <div class="tech-item fade-in">
-                <div class="service-icon">❄️</div>
-                <h4>Snowflake</h4>
+    <section id="technologies" class="technologies">
+        <div class="container">
+            <div class="section-header fade-up">
+                <div class="section-subtitle" data-i18n="ourTechStack">Our Tech Stack</div>
+                <h2 class="section-title" data-i18n="industryLeading">Industry-Leading Technologies</h2>
+                <p class="section-description" data-i18n="techDesc">Powered by best-in-class platforms and frameworks</p>
             </div>
-            <div class="tech-item fade-in">
-                <div class="service-icon">🧱</div>
-                <h4>Databricks</h4>
-            </div>
-            <div class="tech-item fade-in">
-                <div class="service-icon">📈</div>
-                <h4>Power BI</h4>
-            </div>
-            <div class="tech-item fade-in">
-                <div class="service-icon">📉</div>
-                <h4>Tableau</h4>
-            </div>
-            <div class="tech-item fade-in">
-                <div class="service-icon">∑</div>
-                <h4>Sigma</h4>
-            </div>
-            <div class="tech-item fade-in">
-                <div class="service-icon">⚛️</div>
-                <h4>React</h4>
-            </div>
-            <div class="tech-item fade-in">
-                <div class="service-icon">🐍</div>
-                <h4>Python</h4>
-            </div>
-            <div class="tech-item fade-in">
-                <div class="service-icon">🔥</div>
-                <h4>PyTorch</h4>
+            <div class="tech-grid">
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/snowflake/snowflake-original.svg" alt="Snowflake">
+                    </div>
+                    <div class="tech-name">Snowflake</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/databricks.svg" alt="Databricks">
+                    </div>
+                    <div class="tech-name">Databricks</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/dbt.svg" alt="dbt">
+                    </div>
+                    <div class="tech-name">dbt</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/powerbi.svg" alt="Power BI">
+                    </div>
+                    <div class="tech-name">Power BI</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tableau.svg" alt="Tableau">
+                    </div>
+                    <div class="tech-name">Tableau</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://www.sigmacomputing.com/favicon.ico" alt="Sigma" style="width: 45px; height: 45px;">
+                    </div>
+                    <div class="tech-name">Sigma Computing</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mulesoft.svg" alt="MuleSoft">
+                    </div>
+                    <div class="tech-name">MuleSoft</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter">
+                    </div>
+                    <div class="tech-name">Flutter</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+                    </div>
+                    <div class="tech-name">React</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular">
+                    </div>
+                    <div class="tech-name">Angular</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js">
+                    </div>
+                    <div class="tech-name">Vue.js</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js">
+                    </div>
+                    <div class="tech-name">Next.js</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js">
+                    </div>
+                    <div class="tech-name">Node.js</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                    </div>
+                    <div class="tech-name">Python</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                    </div>
+                    <div class="tech-name">Java</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET">
+                    </div>
+                    <div class="tech-name">.NET</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow">
+                    </div>
+                    <div class="tech-name">TensorFlow</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch">
+                    </div>
+                    <div class="tech-name">PyTorch</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/scikitlearn.svg" alt="Scikit-learn">
+                    </div>
+                    <div class="tech-name">Scikit-learn</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original.svg" alt="Apache Spark">
+                    </div>
+                    <div class="tech-name">Apache Spark</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg" alt="Apache Kafka">
+                    </div>
+                    <div class="tech-name">Apache Kafka</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/apacheairflow.svg" alt="Apache Airflow">
+                    </div>
+                    <div class="tech-name">Apache Airflow</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS">
+                    </div>
+                    <div class="tech-name">AWS</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure">
+                    </div>
+                    <div class="tech-name">Azure</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud">
+                    </div>
+                    <div class="tech-name">Google Cloud</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+                    </div>
+                    <div class="tech-name">Docker</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes">
+                    </div>
+                    <div class="tech-name">Kubernetes</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
+                    </div>
+                    <div class="tech-name">PostgreSQL</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB">
+                    </div>
+                    <div class="tech-name">MongoDB</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis">
+                    </div>
+                    <div class="tech-name">Redis</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/looker.svg" alt="Looker">
+                    </div>
+                    <div class="tech-name">Looker</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/qlik.svg" alt="Qlik">
+                    </div>
+                    <div class="tech-name">Qlik</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/informatica.svg" alt="Informatica">
+                    </div>
+                    <div class="tech-name">Informatica</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/salesforce.svg" alt="Salesforce">
+                    </div>
+                    <div class="tech-name">Salesforce</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mailchimp.svg" alt="Mailchimp">
+                    </div>
+                    <div class="tech-name">Mailchimp</div>
+                </div>
+                <div class="tech-item fade-up">
+                    <div class="tech-logo">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googleanalytics.svg" alt="Google Analytics">
+                    </div>
+                    <div class="tech-name">Google Analytics</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section id="about">
-        <div class="section-title fade-in">
-            <h2>Driving Digital Transformation</h2>
-            <p>Building the future, one solution at a time</p>
+    <!-- Industries Section -->
+    <section id="industries" class="industries">
+        <div class="container">
+            <div class="section-header fade-up">
+                <div class="section-subtitle" data-i18n="industriesWeServe">Industries We Serve</div>
+                <h2 class="section-title" data-i18n="tailoredSolutions">Tailored Solutions Across Sectors</h2>
+                <p class="section-description" data-i18n="industriesDesc">Delivering specialized technology solutions across diverse industries with deep domain expertise</p>
+            </div>
+            <div class="industries-grid">
+                <div class="industry-card fade-up">
+                    <div class="industry-icon">🏥</div>
+                    <h3>Healthcare</h3>
+                    <p>Digital transformation solutions for hospitals, clinics, and healthcare providers with focus on patient data management and telemedicine.</p>
+                </div>
+                <div class="industry-card fade-up">
+                    <div class="industry-icon">🏦</div>
+                    <h3>Banking & Finance</h3>
+                    <p>Secure financial technology solutions including digital banking, payment systems, and risk management platforms.</p>
+                </div>
+                <div class="industry-card fade-up">
+                    <div class="industry-icon">🛒</div>
+                    <h3>Retail & E-commerce</h3>
+                    <p>Omnichannel retail solutions with advanced analytics, inventory management, and personalized customer experiences.</p>
+                </div>
+                <div class="industry-card fade-up">
+                    <div class="industry-icon">🏭</div>
+                    <h3>Manufacturing</h3>
+                    <p>Smart manufacturing solutions with IoT integration, supply chain optimization, and predictive maintenance.</p>
+                </div>
+                <div class="industry-card fade-up">
+                    <div class="industry-icon">📚</div>
+                    <h3>Education</h3>
+                    <p>E-learning platforms, student management systems, and educational analytics for institutions and ed-tech companies.</p>
+                </div>
+                <div class="industry-card fade-up">
+                    <div class="industry-icon">🚗</div>
+                    <h3>Automotive</h3>
+                    <p>Connected vehicle solutions, dealership management systems, and automotive analytics platforms.</p>
+                </div>
+                <div class="industry-card fade-up">
+                    <div class="industry-icon">📡</div>
+                    <h3>Telecommunications</h3>
+                    <p>Network optimization, customer experience platforms, and billing solutions for telecom providers.</p>
+                </div>
+                <div class="industry-card fade-up">
+                    <div class="industry-icon">✈️</div>
+                    <h3>Travel & Hospitality</h3>
+                    <p>Booking systems, customer relationship management, and analytics solutions for travel and hospitality sector.</p>
+                </div>
+                <div class="industry-card fade-up">
+                    <div class="industry-icon">⚡</div>
+                    <h3>Energy & Utilities</h3>
+                    <p>Smart grid solutions, energy management systems, and predictive analytics for utility companies.</p>
+                </div>
+                <div class="industry-card fade-up">
+                    <div class="industry-icon">🏢</div>
+                    <h3>Real Estate</h3>
+                    <p>Property management platforms, CRM solutions, and market analytics for real estate businesses.</p>
+                </div>
+                <div class="industry-card fade-up">
+                    <div class="industry-icon">📦</div>
+                    <h3>Logistics & Supply Chain</h3>
+                    <p>End-to-end logistics solutions with real-time tracking, route optimization, and warehouse management.</p>
+                </div>
+                <div class="industry-card fade-up">
+                    <div class="industry-icon">🎮</div>
+                    <h3>Media & Entertainment</h3>
+                    <p>Content management systems, streaming platforms, and audience analytics for media companies.</p>
+                </div>
+            </div>
         </div>
-        <div class="stats">
-            <div class="stat-item fade-in">
-                <div class="stat-number">100+</div>
-                <div class="stat-label">Projects Delivered</div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-choose" class="why-choose">
+        <div class="container">
+            <div class="section-header fade-up">
+                <div class="section-subtitle" data-i18n="whyChooseSCS">Why Choose SCS</div>
+                <h2 class="section-title" data-i18n="trustedPartner">Your Trusted Technology Partner</h2>
+                <p class="section-description" data-i18n="whyChooseDesc">Delivering excellence through innovation, expertise, and commitment</p>
             </div>
-            <div class="stat-item fade-in">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Happy Clients</div>
+            <div class="features-grid">
+                <div class="feature-item fade-up">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Industry Expertise</h3>
+                    <p>Deep domain knowledge across multiple industries with proven track record</p>
+                </div>
+                <div class="feature-item fade-up">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Agile Delivery</h3>
+                    <p>Fast-paced development with continuous integration and deployment</p>
+                </div>
+                <div class="feature-item fade-up">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Security First</h3>
+                    <p>Enterprise-grade security standards and compliance frameworks</p>
+                </div>
+                <div class="feature-item fade-up">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Global Reach</h3>
+                    <p>24/7 support with teams across multiple time zones</p>
+                </div>
             </div>
-            <div class="stat-item fade-in">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Support Available</div>
-            </div>
-            <div class="stat-item fade-in">
-                <div class="stat-number">10+</div>
-                <div class="stat-label">Years Experience</div>
-            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Let's discuss how we can help you achieve your digital transformation goals</p>
+            <a href="#contact" class="btn btn-primary">Get Started Today</a>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
-        <div class="section-title fade-in">
-            <h2>Let's Build Something Amazing</h2>
-            <p>Get in touch with our team of experts</p>
-        </div>
-        <div class="contact-container fade-in">
-            <form id="contactForm">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="service">Service Interested In</label>
-                    <input type="text" id="service" name="service" placeholder="e.g., Data Engineering, Web Development">
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-            </form>
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header fade-up">
+                <div class="section-subtitle" data-i18n="getInTouch">Get In Touch</div>
+                <h2 class="section-title" data-i18n="startJourney">Start Your Journey With Us</h2>
+                <p class="section-description" data-i18n="contactDesc">Fill out the form below and our team will get back to you within 24 hours</p>
+            </div>
+            <div class="contact-container fade-up">
+                <form id="contactForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name" data-i18n="fullName">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-i18n="emailAddress">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="company" data-i18n="companyName">Company Name</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="service" data-i18n="serviceInterest">Service of Interest</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="app-web">Application & Web Development</option>
+                                <option value="data-eng">Data Engineering</option>
+                                <option value="bi">Business Intelligence</option>
+                                <option value="ai-ml">Data Science & AI/ML</option>
+                                <option value="digital-marketing">Digital Marketing</option>
+                                <option value="consulting">General Consulting</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message" data-i18n="message">Message *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" data-i18n="submitInquiry">Submit Inquiry</button>
+                </form>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#services">Services</a>
-                <a href="#technologies">Technologies</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="footer-logo">SCS</div>
+                    <p>Samarth Consultancy Services</p>
+                    <p data-i18n="heroSubtitle">A subsidiary of Samarth Group</p>
+                    <p style="margin-top: 1rem;" data-i18n="footerDesc">Transforming businesses through innovative technology solutions.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <a href="#services" data-i18n="appWebDev">Application Development</a>
+                    <a href="#services" data-i18n="dataEng">Data Engineering</a>
+                    <a href="#services" data-i18n="businessIntel">Business Intelligence</a>
+                    <a href="#services" data-i18n="dataScience">AI & Machine Learning</a>
+                    <a href="#services" data-i18n="digitalMarketing">Digital Marketing</a>
+                    <a href="#services" data-i18n="integration">Integration & APIs</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#blog">Blog</a>
+                    <a href="#case-studies">Case Studies</a>
+                    <a href="#whitepapers">Whitepapers</a>
+                    <a href="#webinars">Webinars</a>
+                    <a href="#documentation">Documentation</a>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="company">Company</h4>
+                    <a href="#home" data-i18n="aboutUs">About Us</a>
+                    <a href="#why-choose" data-i18n="whyUs">Why Choose Us</a>
+                    <a href="#technologies" data-i18n="technologies">Technologies</a>
+                    <a href="#industries" data-i18n="industries">Industries</a>
+                    <a href="#careers" data-i18n="careers">Careers</a>
+                    <a href="#contact" data-i18n="contactUs">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="connect">Connect</h4>
+                    <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5831363e37182b3935392a2c303b2b763b3735">[email&#160;protected]</a></p>
+                    <p>Phone: +91 1234567890</p>
+                    <p>Address: Business District, India</p>
+                </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2024 Samarth Consultancy Services. A subsidiary of Samarth Group. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Samarth Consultancy Services. All rights reserved. A subsidiary of Samarth Group.</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling with proper offset for fixed navbar
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scrolling with proper offset
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -852,8 +1594,10 @@
                 const target = document.querySelector(targetId);
                 
                 if (target) {
-                    const navbarHeight = document.getElementById('navbar').offsetHeight;
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                    const topBarHeight = 40;
+                    const navbarHeight = 80;
+                    const totalOffset = topBarHeight + navbarHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - totalOffset;
                     
                     window.scrollTo({
                         top: targetPosition,
@@ -863,20 +1607,10 @@
             });
         });
 
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Intersection Observer for fade-in animations
+        // Intersection Observer for fade animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -887,88 +1621,540 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => {
+        document.querySelectorAll('.fade-up').forEach(el => {
             observer.observe(el);
-        });
-
-        // Custom cursor
-        const cursor = document.querySelector('.cursor');
-        const cursorFollower = document.querySelector('.cursor-follower');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            setTimeout(() => {
-                cursorFollower.style.left = e.clientX + 'px';
-                cursorFollower.style.top = e.clientY + 'px';
-            }, 100);
-        });
-
-        // Add hover effect to interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, .service-card, .tech-item');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'scale(1.5)';
-                cursorFollower.style.transform = 'scale(1.5)';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'scale(1)';
-                cursorFollower.style.transform = 'scale(1)';
-            });
         });
 
         // Form submission
         document.getElementById('contactForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
+            alert('Thank you for your inquiry! Our team will contact you within 24 hours.');
             e.target.reset();
         });
 
-        // Counter animation for stats
-        const animateCounter = (element) => {
-            const target = parseInt(element.textContent);
-            const duration = 2000;
-            const increment = target / (duration / 16);
+        // Counter animation
+        const animateCounter = (element, target) => {
             let current = 0;
-
-            const updateCounter = () => {
+            const increment = target / 100;
+            const timer = setInterval(() => {
                 current += increment;
-                if (current < target) {
-                    element.textContent = Math.floor(current) + '+';
-                    requestAnimationFrame(updateCounter);
+                if (current >= target) {
+                    element.textContent = target + (target < 100 ? '%' : '+');
+                    clearInterval(timer);
                 } else {
-                    element.textContent = target + '+';
+                    element.textContent = Math.floor(current) + (target < 100 ? '%' : '+');
                 }
-            };
-
-            updateCounter();
+            }, 20);
         };
 
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const counter = entry.target.querySelector('.stat-number');
-                    if (counter && !counter.classList.contains('animated')) {
-                        counter.classList.add('animated');
-                        animateCounter(counter);
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    if (statNumber && !statNumber.classList.contains('animated')) {
+                        statNumber.classList.add('animated');
+                        const text = statNumber.textContent;
+                        const number = parseInt(text);
+                        animateCounter(statNumber, number);
                     }
                 }
             });
         }, { threshold: 0.5 });
 
-        document.querySelectorAll('.stat-item').forEach(stat => {
+        document.querySelectorAll('.stat-box').forEach(stat => {
             statsObserver.observe(stat);
         });
 
-        // Parallax effect on scroll
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const particles = document.querySelectorAll('.particle');
-            particles.forEach((particle, index) => {
-                const speed = 0.5 + (index * 0.2);
-                particle.style.transform = `translateY(${scrolled * speed}px)`;
+        // Language Selector with actual translations
+        const translations = {
+            en: {
+                // Navigation
+                home: "Home",
+                ourServices: "Our Services",
+                technologies: "Technologies",
+                industries: "Industries",
+                resources: "Resources",
+                whyUs: "Why Us",
+                careers: "Careers",
+                contactUs: "Contact Us",
+                
+                // Hero Section
+                heroTitle: "Empowering Businesses with <span class='highlight'>Intelligent Solutions</span>",
+                heroSubtitle: "A Subsidiary of Samarth Group",
+                heroDescription: "Leading IT consultancy delivering cutting-edge technology solutions in Application Development, Data Engineering, Business Intelligence, AI/ML, and Digital Marketing.",
+                exploreServices: "Explore Our Services",
+                scheduleConsultation: "Schedule Consultation",
+                
+                // Services
+                whatWeOffer: "What We Offer",
+                comprehensiveIT: "Comprehensive IT Solutions",
+                servicesDesc: "Transform your business with our end-to-end technology services designed for the digital age",
+                
+                // Service Titles
+                appWebDev: "Application & Web Development",
+                dataEng: "Data Engineering",
+                businessIntel: "Business Intelligence",
+                dataScience: "Data Science & AI/ML",
+                digitalMarketing: "Digital Marketing",
+                integration: "Integration & APIs",
+                
+                // Technologies
+                ourTechStack: "Our Tech Stack",
+                industryLeading: "Industry-Leading Technologies",
+                techDesc: "Powered by best-in-class platforms and frameworks",
+                
+                // Industries
+                industriesWeServe: "Industries We Serve",
+                tailoredSolutions: "Tailored Solutions Across Sectors",
+                industriesDesc: "Delivering specialized technology solutions across diverse industries with deep domain expertise",
+                
+                // Why Choose
+                whyChooseSCS: "Why Choose SCS",
+                trustedPartner: "Your Trusted Technology Partner",
+                whyChooseDesc: "Delivering excellence through innovation, expertise, and commitment",
+                
+                // Contact
+                getInTouch: "Get In Touch",
+                startJourney: "Start Your Journey With Us",
+                contactDesc: "Fill out the form below and our team will get back to you within 24 hours",
+                
+                // Form
+                fullName: "Full Name",
+                emailAddress: "Email Address",
+                companyName: "Company Name",
+                serviceInterest: "Service of Interest",
+                message: "Message",
+                submitInquiry: "Submit Inquiry",
+                
+                // Footer
+                footerDesc: "Transforming businesses through innovative technology solutions.",
+                company: "Company",
+                aboutUs: "About Us",
+                connect: "Connect",
+                
+                // Stats
+                projectsDelivered: "Projects Delivered",
+                clientSatisfaction: "Client Satisfaction",
+                enterpriseClients: "Enterprise Clients",
+                supportAvailable: "Support Available",
+                
+                // Stats numbers
+                stat1: "150+",
+                stat2: "98%",
+                stat3: "50+",
+                stat4: "24/7"
+            },
+            hi: {
+                // Navigation
+                home: "होम",
+                ourServices: "हमारी सेवाएं",
+                technologies: "प्रौद्योगिकी",
+                industries: "उद्योग",
+                resources: "संसाधन",
+                whyUs: "हमें क्यों चुनें",
+                careers: "करियर",
+                contactUs: "संपर्क करें",
+                
+                // Hero Section
+                heroTitle: "व्यवसायों को <span class='highlight'>बुद्धिमान समाधानों</span> से सशक्त बनाना",
+                heroSubtitle: "समर्थ समूह की सहायक कंपनी",
+                heroDescription: "एप्लिकेशन विकास, डेटा इंजीनियरिंग, बिजनेस इंटेलिजेंस, AI/ML और डिजिटल मार्केटिंग में अत्याधुनिक तकनीकी समाधान प्रदान करने वाली प्रमुख IT परामर्श कंपनी।",
+                exploreServices: "हमारी सेवाएं देखें",
+                scheduleConsultation: "परामर्श बुक करें",
+                
+                // Services
+                whatWeOffer: "हम क्या प्रदान करते हैं",
+                comprehensiveIT: "व्यापक IT समाधान",
+                servicesDesc: "डिजिटल युग के लिए डिज़ाइन की गई हमारी एंड-टू-एंड तकनीकी सेवाओं के साथ अपने व्यवसाय को बदलें",
+                
+                // Service Titles
+                appWebDev: "एप्लिकेशन और वेब विकास",
+                dataEng: "डेटा इंजीनियरिंग",
+                businessIntel: "बिजनेस इंटेलिजेंस",
+                dataScience: "डेटा साइंस और AI/ML",
+                digitalMarketing: "डिजिटल मार्केटिंग",
+                integration: "एकीकरण और APIs",
+                
+                // Technologies
+                ourTechStack: "हमारी तकनीकी स्टैक",
+                industryLeading: "उद्योग-अग्रणी प्रौद्योगिकियां",
+                techDesc: "सर्वोत्तम प्लेटफार्मों और फ्रेमवर्क द्वारा संचालित",
+                
+                // Industries
+                industriesWeServe: "हम जिन उद्योगों की सेवा करते हैं",
+                tailoredSolutions: "विभिन्न क्षेत्रों में अनुकूलित समाधान",
+                industriesDesc: "गहन डोमेन विशेषज्ञता के साथ विविध उद्योगों में विशेष तकनीकी समाधान प्रदान करना",
+                
+                // Why Choose
+                whyChooseSCS: "SCS को क्यों चुनें",
+                trustedPartner: "आपका विश्वसनीय प्रौद्योगिकी साझेदार",
+                whyChooseDesc: "नवाचार, विशेषज्ञता और प्रतिबद्धता के माध्यम से उत्कृष्टता प्रदान करना",
+                
+                // Contact
+                getInTouch: "संपर्क में रहें",
+                startJourney: "हमारे साथ अपनी यात्रा शुरू करें",
+                contactDesc: "नीचे दिया गया फॉर्म भरें और हमारी टीम 24 घंटे के भीतर आपसे संपर्क करेगी",
+                
+                // Form
+                fullName: "पूरा नाम",
+                emailAddress: "ईमेल पता",
+                companyName: "कंपनी का नाम",
+                serviceInterest: "सेवा में रुचि",
+                message: "संदेश",
+                submitInquiry: "पूछताछ सबमिट करें",
+                
+                // Footer
+                footerDesc: "नवीन तकनीकी समाधानों के माध्यम से व्यवसायों को बदलना।",
+                company: "कंपनी",
+                aboutUs: "हमारे बारे में",
+                connect: "जुड़ें",
+                
+                // Stats
+                projectsDelivered: "प्रोजेक्ट पूर्ण",
+                clientSatisfaction: "ग्राहक संतुष्टि",
+                enterpriseClients: "एंटरप्राइज़ क्लाइंट",
+                supportAvailable: "सहायता उपलब्ध",
+                
+                // Stats numbers
+                stat1: "150+",
+                stat2: "98%",
+                stat3: "50+",
+                stat4: "24/7"
+            },
+            es: {
+                // Navigation
+                home: "Inicio",
+                ourServices: "Nuestros Servicios",
+                technologies: "Tecnologías",
+                industries: "Industrias",
+                resources: "Recursos",
+                whyUs: "Por Qué Nosotros",
+                careers: "Carreras",
+                contactUs: "Contáctenos",
+                
+                // Hero Section
+                heroTitle: "Empoderando Empresas con <span class='highlight'>Soluciones Inteligentes</span>",
+                heroSubtitle: "Una Subsidiaria del Grupo Samarth",
+                heroDescription: "Consultoría IT líder que ofrece soluciones tecnológicas de vanguardia en Desarrollo de Aplicaciones, Ingeniería de Datos, Business Intelligence, AI/ML y Marketing Digital.",
+                exploreServices: "Explorar Servicios",
+                scheduleConsultation: "Programar Consulta",
+                
+                // Services
+                whatWeOffer: "Lo Que Ofrecemos",
+                comprehensiveIT: "Soluciones IT Integrales",
+                servicesDesc: "Transforme su negocio con nuestros servicios tecnológicos de extremo a extremo diseñados para la era digital",
+                
+                // Service Titles
+                appWebDev: "Desarrollo de Aplicaciones y Web",
+                dataEng: "Ingeniería de Datos",
+                businessIntel: "Inteligencia de Negocios",
+                dataScience: "Ciencia de Datos e IA/ML",
+                digitalMarketing: "Marketing Digital",
+                integration: "Integración y APIs",
+                
+                // Technologies
+                ourTechStack: "Nuestro Stack Tecnológico",
+                industryLeading: "Tecnologías Líderes en la Industria",
+                techDesc: "Impulsado por plataformas y frameworks de primera clase",
+                
+                // Industries
+                industriesWeServe: "Industrias que Servimos",
+                tailoredSolutions: "Soluciones Personalizadas en Todos los Sectores",
+                industriesDesc: "Entregando soluciones tecnológicas especializadas en diversas industrias con profunda experiencia en el dominio",
+                
+                // Why Choose
+                whyChooseSCS: "Por Qué Elegir SCS",
+                trustedPartner: "Su Socio Tecnológico de Confianza",
+                whyChooseDesc: "Entregando excelencia a través de innovación, experiencia y compromiso",
+                
+                // Contact
+                getInTouch: "Póngase en Contacto",
+                startJourney: "Comience su Viaje con Nosotros",
+                contactDesc: "Complete el formulario a continuación y nuestro equipo se pondrá en contacto con usted en 24 horas",
+                
+                // Form
+                fullName: "Nombre Completo",
+                emailAddress: "Correo Electrónico",
+                companyName: "Nombre de la Empresa",
+                serviceInterest: "Servicio de Interés",
+                message: "Mensaje",
+                submitInquiry: "Enviar Consulta",
+                
+                // Footer
+                footerDesc: "Transformando empresas a través de soluciones tecnológicas innovadoras.",
+                company: "Empresa",
+                aboutUs: "Sobre Nosotros",
+                connect: "Conectar",
+                
+                // Stats
+                projectsDelivered: "Proyectos Entregados",
+                clientSatisfaction: "Satisfacción del Cliente",
+                enterpriseClients: "Clientes Empresariales",
+                supportAvailable: "Soporte Disponible",
+                
+                // Stats numbers
+                stat1: "150+",
+                stat2: "98%",
+                stat3: "50+",
+                stat4: "24/7"
+            },
+            fr: {
+                // Navigation
+                home: "Accueil",
+                ourServices: "Nos Services",
+                technologies: "Technologies",
+                industries: "Industries",
+                resources: "Ressources",
+                whyUs: "Pourquoi Nous",
+                careers: "Carrières",
+                contactUs: "Nous Contacter",
+                
+                // Hero Section
+                heroTitle: "Autonomiser les Entreprises avec des <span class='highlight'>Solutions Intelligentes</span>",
+                heroSubtitle: "Une Filiale du Groupe Samarth",
+                heroDescription: "Cabinet de conseil IT leader offrant des solutions technologiques de pointe en Développement d'Applications, Ingénierie des Données, Business Intelligence, IA/ML et Marketing Digital.",
+                exploreServices: "Explorer nos Services",
+                scheduleConsultation: "Planifier une Consultation",
+                
+                // Services
+                whatWeOffer: "Ce Que Nous Offrons",
+                comprehensiveIT: "Solutions IT Complètes",
+                servicesDesc: "Transformez votre entreprise avec nos services technologiques de bout en bout conçus pour l'ère numérique",
+                
+                // Service Titles
+                appWebDev: "Développement d'Applications et Web",
+                dataEng: "Ingénierie des Données",
+                businessIntel: "Intelligence d'Affaires",
+                dataScience: "Science des Données et IA/ML",
+                digitalMarketing: "Marketing Digital",
+                integration: "Intégration et APIs",
+                
+                // Technologies
+                ourTechStack: "Notre Stack Technologique",
+                industryLeading: "Technologies de Pointe",
+                techDesc: "Alimenté par des plateformes et frameworks de premier ordre",
+                
+                // Industries
+                industriesWeServe: "Industries que Nous Servons",
+                tailoredSolutions: "Solutions Sur Mesure dans Tous les Secteurs",
+                industriesDesc: "Fournir des solutions technologiques spécialisées dans diverses industries avec une expertise approfondie du domaine",
+                
+                // Why Choose
+                whyChooseSCS: "Pourquoi Choisir SCS",
+                trustedPartner: "Votre Partenaire Technologique de Confiance",
+                whyChooseDesc: "Offrir l'excellence grâce à l'innovation, l'expertise et l'engagement",
+                
+                // Contact
+                getInTouch: "Entrer en Contact",
+                startJourney: "Commencez Votre Voyage Avec Nous",
+                contactDesc: "Remplissez le formulaire ci-dessous et notre équipe vous contactera dans les 24 heures",
+                
+                // Form
+                fullName: "Nom Complet",
+                emailAddress: "Adresse Email",
+                companyName: "Nom de l'Entreprise",
+                serviceInterest: "Service d'Intérêt",
+                message: "Message",
+                submitInquiry: "Soumettre la Demande",
+                
+                // Footer
+                footerDesc: "Transformer les entreprises grâce à des solutions technologiques innovantes.",
+                company: "Entreprise",
+                aboutUs: "À Propos de Nous",
+                connect: "Connecter",
+                
+                // Stats
+                projectsDelivered: "Projets Livrés",
+                clientSatisfaction: "Satisfaction Client",
+                enterpriseClients: "Clients Entreprise",
+                supportAvailable: "Support Disponible",
+                
+                // Stats numbers
+                stat1: "150+",
+                stat2: "98%",
+                stat3: "50+",
+                stat4: "24/7"
+            },
+            de: {
+                // Navigation
+                home: "Startseite",
+                ourServices: "Unsere Dienstleistungen",
+                technologies: "Technologien",
+                industries: "Branchen",
+                resources: "Ressourcen",
+                whyUs: "Warum Wir",
+                careers: "Karriere",
+                contactUs: "Kontakt",
+                
+                // Hero Section
+                heroTitle: "Unternehmen mit <span class='highlight'>Intelligenten Lösungen</span> Stärken",
+                heroSubtitle: "Eine Tochtergesellschaft der Samarth Gruppe",
+                heroDescription: "Führende IT-Beratung, die modernste Technologielösungen in Anwendungsentwicklung, Data Engineering, Business Intelligence, KI/ML und digitalem Marketing bietet.",
+                exploreServices: "Unsere Dienstleistungen Entdecken",
+                scheduleConsultation: "Beratung Vereinbaren",
+                
+                // Services
+                whatWeOffer: "Was Wir Anbieten",
+                comprehensiveIT: "Umfassende IT-Lösungen",
+                servicesDesc: "Transformieren Sie Ihr Unternehmen mit unseren End-to-End-Technologiediensten für das digitale Zeitalter",
+                
+                // Service Titles
+                appWebDev: "Anwendungs- und Webentwicklung",
+                dataEng: "Datentechnik",
+                businessIntel: "Business Intelligence",
+                dataScience: "Datenwissenschaft und KI/ML",
+                digitalMarketing: "Digitales Marketing",
+                integration: "Integration und APIs",
+                
+                // Technologies
+                ourTechStack: "Unser Tech-Stack",
+                industryLeading: "Branchenführende Technologien",
+                techDesc: "Angetrieben von erstklassigen Plattformen und Frameworks",
+                
+                // Industries
+                industriesWeServe: "Branchen, die Wir Bedienen",
+                tailoredSolutions: "Maßgeschneiderte Lösungen Über Alle Sektoren",
+                industriesDesc: "Bereitstellung spezialisierter Technologielösungen in verschiedenen Branchen mit fundierter Domänenkompetenz",
+                
+                // Why Choose
+                whyChooseSCS: "Warum SCS Wählen",
+                trustedPartner: "Ihr Vertrauenswürdiger Technologiepartner",
+                whyChooseDesc: "Exzellenz durch Innovation, Fachwissen und Engagement",
+                
+                // Contact
+                getInTouch: "Kontakt Aufnehmen",
+                startJourney: "Beginnen Sie Ihre Reise Mit Uns",
+                contactDesc: "Füllen Sie das untenstehende Formular aus und unser Team wird sich innerhalb von 24 Stunden bei Ihnen melden",
+                
+                // Form
+                fullName: "Vollständiger Name",
+                emailAddress: "E-Mail-Adresse",
+                companyName: "Firmenname",
+                serviceInterest: "Interessierter Service",
+                message: "Nachricht",
+                submitInquiry: "Anfrage Senden",
+                
+                // Footer
+                footerDesc: "Unternehmen durch innovative Technologielösungen transformieren.",
+                company: "Unternehmen",
+                aboutUs: "Über Uns",
+                connect: "Verbinden",
+                
+                // Stats
+                projectsDelivered: "Projekte Geliefert",
+                clientSatisfaction: "Kundenzufriedenheit",
+                enterpriseClients: "Unternehmenskunden",
+                supportAvailable: "Support Verfügbar",
+                
+                // Stats numbers
+                stat1: "150+",
+                stat2: "98%",
+                stat3: "50+",
+                stat4: "24/7"
+            },
+            zh: {
+                // Navigation
+                home: "首页",
+                ourServices: "我们的服务",
+                technologies: "技术",
+                industries: "行业",
+                resources: "资源",
+                whyUs: "为什么选择我们",
+                careers: "职业",
+                contactUs: "联系我们",
+                
+                // Hero Section
+                heroTitle: "通过<span class='highlight'>智能解决方案</span>赋能企业",
+                heroSubtitle: "Samarth集团的子公司",
+                heroDescription: "领先的IT咨询公司，提供应用开发、数据工程、商业智能、人工智能/机器学习和数字营销等尖端技术解决方案。",
+                exploreServices: "探索我们的服务",
+                scheduleConsultation: "预约咨询",
+                
+                // Services
+                whatWeOffer: "我们提供什么",
+                comprehensiveIT: "全面的IT解决方案",
+                servicesDesc: "通过我们为数字时代设计的端到端技术服务转型您的业务",
+                
+                // Service Titles
+                appWebDev: "应用与网页开发",
+                dataEng: "数据工程",
+                businessIntel: "商业智能",
+                dataScience: "数据科学与人工智能/机器学习",
+                digitalMarketing: "数字营销",
+                integration: "集成与API",
+                
+                // Technologies
+                ourTechStack: "我们的技术栈",
+                industryLeading: "行业领先技术",
+                techDesc: "由一流平台和框架提供支持",
+                
+                // Industries
+                industriesWeServe: "我们服务的行业",
+                tailoredSolutions: "跨行业定制解决方案",
+                industriesDesc: "凭借深厚的领域专业知识，在多个行业提供专业技术解决方案",
+                
+                // Why Choose
+                whyChooseSCS: "为什么选择SCS",
+                trustedPartner: "您值得信赖的技术合作伙伴",
+                whyChooseDesc: "通过创新、专业知识和承诺提供卓越服务",
+                
+                // Contact
+                getInTouch: "联系我们",
+                startJourney: "开始您的旅程",
+                contactDesc: "填写下面的表格，我们的团队将在24小时内与您联系",
+                
+                // Form
+                fullName: "全名",
+                emailAddress: "电子邮件地址",
+                companyName: "公司名称",
+                serviceInterest: "感兴趣的服务",
+                message: "留言",
+                submitInquiry: "提交咨询",
+                
+                // Footer
+                footerDesc: "通过创新技术解决方案转型企业。",
+                company: "公司",
+                aboutUs: "关于我们",
+                connect: "联系",
+                
+                // Stats
+                projectsDelivered: "已交付项目",
+                clientSatisfaction: "客户满意度",
+                enterpriseClients: "企业客户",
+                supportAvailable: "全天候支持",
+                
+                // Stats numbers
+                stat1: "150+",
+                stat2: "98%",
+                stat3: "50+",
+                stat4: "24/7"
+            }
+        };
+
+        // Set initial language
+        let currentLanguage = 'en';
+
+        // Function to translate page
+        function translatePage(lang) {
+            currentLanguage = lang;
+            const t = translations[lang] || translations.en;
+            
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (t[key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = t[key];
+                    } else {
+                        element.innerHTML = t[key];
+                    }
+                }
             });
+        }
+
+        document.getElementById('languageSelect').addEventListener('change', function(e) {
+            const selectedLang = e.target.value;
+            translatePage(selectedLang);
         });
     </script>
 </body>
