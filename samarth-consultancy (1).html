@@ -266,23 +266,311 @@
         /* Hero Section */
         .hero {
             margin-top: 120px;
-            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            background: linear-gradient(135deg, #0A1628 0%, #1a2942 100%);
             color: var(--white);
             padding: 6rem 5%;
             position: relative;
             overflow: hidden;
         }
 
-        .hero::before {
+        /* Globe container */
+        .globe-container {
+            position: absolute;
+            top: 50%;
+            right: -10%;
+            transform: translateY(-50%);
+            width: 600px;
+            height: 600px;
+            z-index: 1;
+        }
+
+        .globe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 102, 204, 0.2), rgba(0, 51, 102, 0.1));
+            border: 2px solid rgba(0, 240, 255, 0.2);
+            animation: rotateGlobe 30s linear infinite;
+            box-shadow: 
+                inset 0 0 50px rgba(0, 240, 255, 0.1),
+                0 0 80px rgba(0, 102, 204, 0.3);
+        }
+
+        @keyframes rotateGlobe {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Latitude/Longitude lines */
+        .globe-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .latitude-line, .longitude-line {
+            position: absolute;
+            border: 1px solid rgba(0, 240, 255, 0.15);
+        }
+
+        .latitude-line {
+            width: 100%;
+            left: 0;
+            border-radius: 50%;
+        }
+
+        .latitude-line:nth-child(1) { top: 15%; height: 70%; }
+        .latitude-line:nth-child(2) { top: 25%; height: 50%; }
+        .latitude-line:nth-child(3) { top: 35%; height: 30%; }
+        .latitude-line:nth-child(4) { top: 45%; height: 10%; }
+
+        .longitude-line {
+            height: 100%;
+            top: 0;
+            width: 50%;
+            left: 25%;
+            border-radius: 50%;
+            transform-origin: center;
+        }
+
+        .longitude-line:nth-child(5) { transform: rotateY(0deg); }
+        .longitude-line:nth-child(6) { transform: rotateY(30deg); }
+        .longitude-line:nth-child(7) { transform: rotateY(60deg); }
+        .longitude-line:nth-child(8) { transform: rotateY(90deg); }
+
+        /* Data points on globe */
+        .data-point {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #00F0FF;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00F0FF, 0 0 30px rgba(0, 240, 255, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .data-point::before {
             content: '';
             position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(0, 240, 255, 0.3);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: ripple 2s ease-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: translate(-50%, -50%) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* Position data points around the globe */
+        .data-point:nth-child(1) { top: 20%; left: 30%; animation-delay: 0s; }
+        .data-point:nth-child(2) { top: 40%; left: 60%; animation-delay: 0.3s; }
+        .data-point:nth-child(3) { top: 60%; left: 25%; animation-delay: 0.6s; }
+        .data-point:nth-child(4) { top: 35%; left: 75%; animation-delay: 0.9s; }
+        .data-point:nth-child(5) { top: 70%; left: 50%; animation-delay: 1.2s; }
+        .data-point:nth-child(6) { top: 25%; left: 50%; animation-delay: 1.5s; }
+        .data-point:nth-child(7) { top: 55%; left: 40%; animation-delay: 1.8s; }
+        .data-point:nth-child(8) { top: 15%; left: 70%; animation-delay: 2.1s; }
+
+        /* Connection lines between points */
+        .connection-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 240, 255, 0.6) 50%, 
+                transparent);
+            transform-origin: left center;
+            animation: dataFlow 3s ease-in-out infinite;
+        }
+
+        @keyframes dataFlow {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .connection-line:nth-child(9) {
+            top: 20%;
+            left: 30%;
+            width: 150px;
+            transform: rotate(25deg);
+            animation-delay: 0s;
+        }
+
+        .connection-line:nth-child(10) {
+            top: 40%;
+            left: 60%;
+            width: 120px;
+            transform: rotate(-45deg);
+            animation-delay: 0.5s;
+        }
+
+        .connection-line:nth-child(11) {
+            top: 60%;
+            left: 25%;
+            width: 180px;
+            transform: rotate(15deg);
+            animation-delay: 1s;
+        }
+
+        .connection-line:nth-child(12) {
+            top: 35%;
+            left: 50%;
+            width: 140px;
+            transform: rotate(80deg);
+            animation-delay: 1.5s;
+        }
+
+        /* Orbiting particles */
+        .orbit-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(0, 240, 255, 0.8);
+        }
+
+        .orbit {
+            position: absolute;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            border-radius: 50%;
+            animation: rotateOrbit 20s linear infinite;
+        }
+
+        .orbit:nth-child(1) {
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            animation-duration: 25s;
+        }
+
+        .orbit:nth-child(2) {
+            width: 140%;
+            height: 140%;
+            top: -20%;
+            left: -20%;
+            animation-duration: 35s;
+            animation-direction: reverse;
+        }
+
+        @keyframes rotateOrbit {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Background network grid */
+        .network-grid {
+            position: absolute;
             top: 0;
-            right: 0;
-            width: 50%;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.05);stop-opacity:1" /><stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" /></linearGradient></defs><circle cx="800" cy="200" r="400" fill="url(%23grad)"/><circle cx="600" cy="600" r="300" fill="url(%23grad)"/></svg>') no-repeat center;
-            background-size: cover;
-            opacity: 0.3;
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridSlide 20s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes gridSlide {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 40px 40px;
+            }
+        }
+
+        /* Floating data packets */
+        .data-packet {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #00F0FF;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00F0FF;
+            animation: floatPacket 15s linear infinite;
+        }
+
+        .data-packet:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .data-packet:nth-child(2) {
+            left: 30%;
+            animation-delay: 3s;
+        }
+
+        .data-packet:nth-child(3) {
+            left: 50%;
+            animation-delay: 6s;
+        }
+
+        .data-packet:nth-child(4) {
+            left: 70%;
+            animation-delay: 9s;
+        }
+
+        .data-packet:nth-child(5) {
+            left: 90%;
+            animation-delay: 12s;
+        }
+
+        @keyframes floatPacket {
+            0% {
+                top: 100%;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: -10%;
+                opacity: 0;
+            }
         }
 
         .hero-container {
@@ -293,7 +581,7 @@
             gap: 4rem;
             align-items: center;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
         .hero-content h1 {
@@ -934,7 +1222,7 @@
     <div class="top-bar">
         <div class="top-bar-container">
             <div class="top-bar-left">
-                <span>📧 info@samarthcs.com</span>
+                <span>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="533a3d353c1320323e3221273b30207d303c3e">[email&#160;protected]</a></span>
                 <span>📞 +91 1234567890</span>
             </div>
             <div class="top-bar-right">
@@ -1000,6 +1288,57 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <!-- Network Grid Background -->
+        <div class="network-grid"></div>
+        
+        <!-- Floating Data Packets -->
+        <div class="data-packet"></div>
+        <div class="data-packet"></div>
+        <div class="data-packet"></div>
+        <div class="data-packet"></div>
+        <div class="data-packet"></div>
+        
+        <!-- Globe Container -->
+        <div class="globe-container">
+            <div class="globe">
+                <!-- Globe lines -->
+                <div class="globe-lines">
+                    <div class="latitude-line"></div>
+                    <div class="latitude-line"></div>
+                    <div class="latitude-line"></div>
+                    <div class="latitude-line"></div>
+                    <div class="longitude-line"></div>
+                    <div class="longitude-line"></div>
+                    <div class="longitude-line"></div>
+                    <div class="longitude-line"></div>
+                </div>
+                
+                <!-- Data points -->
+                <div class="data-point"></div>
+                <div class="data-point"></div>
+                <div class="data-point"></div>
+                <div class="data-point"></div>
+                <div class="data-point"></div>
+                <div class="data-point"></div>
+                <div class="data-point"></div>
+                <div class="data-point"></div>
+                
+                <!-- Connection lines -->
+                <div class="connection-line"></div>
+                <div class="connection-line"></div>
+                <div class="connection-line"></div>
+                <div class="connection-line"></div>
+            </div>
+            
+            <!-- Orbiting particles -->
+            <div class="orbit">
+                <div class="orbit-particle" style="top: 0; left: 50%;"></div>
+            </div>
+            <div class="orbit">
+                <div class="orbit-particle" style="top: 50%; right: 0;"></div>
+            </div>
+        </div>
+        
         <div class="hero-container">
             <div class="hero-content animate-slide">
                 <h1 data-i18n="heroTitle">Empowering Businesses with <span class="highlight">Intelligent Solutions</span></h1>
@@ -1585,7 +1924,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling with proper offset
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
